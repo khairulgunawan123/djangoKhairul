@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    web:
+        build: .
+        container_name: belajar_django_blog
+        # command: python manage.py runserver 0.0.0.0:9007
+        command : gunicorn myproject.wsgi:application --bind 0.0.0.0:9003
+
+
+
+        volumes:
+            - .:/app
+        ports:
+            - "9003:9003"
